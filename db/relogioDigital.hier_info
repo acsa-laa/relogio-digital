@@ -1,0 +1,831 @@
+|relogioDigital
+keyb[0] => codificador:ct.h9
+keyb[1] => codificador:ct.h8
+keyb[2] => codificador:ct.h7
+keyb[3] => codificador:ct.h6
+keyb[4] => codificador:ct.h5
+keyb[5] => codificador:ct.h4
+keyb[6] => codificador:ct.h3
+keyb[7] => codificador:ct.h2
+keyb[8] => codificador:ct.h1
+keyb[9] => codificador:ct.h0
+tc[0] => demux:dm.sel1[0]
+tc[0] => ctrlEnable:ce.TC[0]
+tc[1] => demux:dm.sel1[1]
+tc[1] => ctrlEnable:ce.TC[1]
+sel => ctrlEnable:ce.SEL
+sel => demux_4x8:dm2_1.sel
+sel => demux_4x8:dm2_2.sel
+sel => demux_4x8:dm2_3.sel
+sel => demux_4x8:dm2_4.sel
+sel => multplex:mt1.sel
+sel => multplex:mt2.sel
+sel => multplex:mt3.sel
+sel => multplex:mt4.sel
+clock => counter_Wbits:c1.clk
+clock => counter_Wbits:c2.clk
+clock => counter_Wbits:c3.clk
+clock => counter_Wbits:c4.clk
+clock => reg_pp_Wbits:r1.clk
+clock => reg_pp_Wbits:r2.clk
+clock => reg_pp_Wbits:r3.clk
+clock => reg_pp_Wbits:r4.clk
+RC => ctrlEnable:ce.rc
+RC => counter_Wbits:c1.load
+RC => counter_Wbits:c2.load
+RC => counter_Wbits:c3.load
+RC => counter_Wbits:c4.load
+H1[0] << decodificador:dc1.a
+H1[1] << decodificador:dc1.b
+H1[2] << decodificador:dc1.c
+H1[3] << decodificador:dc1.d
+H1[4] << decodificador:dc1.e
+H1[5] << decodificador:dc1.f
+H1[6] << decodificador:dc1.g
+H1[7] << <GND>
+H0[0] << decodificador:dc2.a
+H0[1] << decodificador:dc2.b
+H0[2] << decodificador:dc2.c
+H0[3] << decodificador:dc2.d
+H0[4] << decodificador:dc2.e
+H0[5] << decodificador:dc2.f
+H0[6] << decodificador:dc2.g
+H0[7] << <GND>
+M1[0] << decodificador:dc3.a
+M1[1] << decodificador:dc3.b
+M1[2] << decodificador:dc3.c
+M1[3] << decodificador:dc3.d
+M1[4] << decodificador:dc3.e
+M1[5] << decodificador:dc3.f
+M1[6] << decodificador:dc3.g
+M1[7] << <GND>
+M0[0] << decodificador:dc4.a
+M0[1] << decodificador:dc4.b
+M0[2] << decodificador:dc4.c
+M0[3] << decodificador:dc4.d
+M0[4] << decodificador:dc4.e
+M0[5] << decodificador:dc4.f
+M0[6] << decodificador:dc4.g
+M0[7] << <GND>
+alarm << alarmAnd:saida1.sad
+
+
+|relogioDigital|codificador:ct
+h0 => ~NO_FANOUT~
+h1 => D1.IN0
+h2 => C1.IN0
+h3 => C1.IN1
+h3 => D1.IN1
+h4 => B1.IN0
+h5 => B1.IN1
+h5 => D1.IN1
+h6 => B1.IN1
+h6 => C1.IN1
+h7 => B1.IN1
+h7 => C1.IN1
+h7 => D1.IN1
+h8 => A1.IN0
+h9 => A1.IN1
+h9 => D1.IN1
+A1 <= A1.DB_MAX_OUTPUT_PORT_TYPE
+B1 <= B1.DB_MAX_OUTPUT_PORT_TYPE
+C1 <= C1.DB_MAX_OUTPUT_PORT_TYPE
+D1 <= D1.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|demux:dm
+Ai[0] => demux_1x4:d4.a
+Ai[1] => demux_1x4:d3.a
+Ai[2] => demux_1x4:d2.a
+Ai[3] => demux_1x4:d1.a
+sel1[0] => demux_1x4:d1.sel[0]
+sel1[0] => demux_1x4:d2.sel[0]
+sel1[0] => demux_1x4:d3.sel[0]
+sel1[0] => demux_1x4:d4.sel[0]
+sel1[1] => demux_1x4:d1.sel[1]
+sel1[1] => demux_1x4:d2.sel[1]
+sel1[1] => demux_1x4:d3.sel[1]
+sel1[1] => demux_1x4:d4.sel[1]
+S1[0] <= demux_1x4:d4.s1
+S1[1] <= demux_1x4:d3.s1
+S1[2] <= demux_1x4:d2.s1
+S1[3] <= demux_1x4:d1.s1
+S2[0] <= demux_1x4:d4.s2
+S2[1] <= demux_1x4:d3.s2
+S2[2] <= demux_1x4:d2.s2
+S2[3] <= demux_1x4:d1.s2
+S3[0] <= demux_1x4:d4.s3
+S3[1] <= demux_1x4:d3.s3
+S3[2] <= demux_1x4:d2.s3
+S3[3] <= demux_1x4:d1.s3
+S4[0] <= demux_1x4:d4.s4
+S4[1] <= demux_1x4:d3.s4
+S4[2] <= demux_1x4:d2.s4
+S4[3] <= demux_1x4:d1.s4
+
+
+|relogioDigital|demux:dm|demux_1x4:d1
+a => s1.IN1
+a => s2.IN1
+a => s3.IN1
+a => s4.IN1
+sel[0] => s2.IN0
+sel[0] => s4.IN0
+sel[0] => s1.IN0
+sel[0] => s3.IN0
+sel[1] => s3.IN1
+sel[1] => s4.IN1
+sel[1] => s1.IN1
+sel[1] => s2.IN1
+s1 <= s1.DB_MAX_OUTPUT_PORT_TYPE
+s2 <= s2.DB_MAX_OUTPUT_PORT_TYPE
+s3 <= s3.DB_MAX_OUTPUT_PORT_TYPE
+s4 <= s4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|demux:dm|demux_1x4:d2
+a => s1.IN1
+a => s2.IN1
+a => s3.IN1
+a => s4.IN1
+sel[0] => s2.IN0
+sel[0] => s4.IN0
+sel[0] => s1.IN0
+sel[0] => s3.IN0
+sel[1] => s3.IN1
+sel[1] => s4.IN1
+sel[1] => s1.IN1
+sel[1] => s2.IN1
+s1 <= s1.DB_MAX_OUTPUT_PORT_TYPE
+s2 <= s2.DB_MAX_OUTPUT_PORT_TYPE
+s3 <= s3.DB_MAX_OUTPUT_PORT_TYPE
+s4 <= s4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|demux:dm|demux_1x4:d3
+a => s1.IN1
+a => s2.IN1
+a => s3.IN1
+a => s4.IN1
+sel[0] => s2.IN0
+sel[0] => s4.IN0
+sel[0] => s1.IN0
+sel[0] => s3.IN0
+sel[1] => s3.IN1
+sel[1] => s4.IN1
+sel[1] => s1.IN1
+sel[1] => s2.IN1
+s1 <= s1.DB_MAX_OUTPUT_PORT_TYPE
+s2 <= s2.DB_MAX_OUTPUT_PORT_TYPE
+s3 <= s3.DB_MAX_OUTPUT_PORT_TYPE
+s4 <= s4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|demux:dm|demux_1x4:d4
+a => s1.IN1
+a => s2.IN1
+a => s3.IN1
+a => s4.IN1
+sel[0] => s2.IN0
+sel[0] => s4.IN0
+sel[0] => s1.IN0
+sel[0] => s3.IN0
+sel[1] => s3.IN1
+sel[1] => s4.IN1
+sel[1] => s1.IN1
+sel[1] => s2.IN1
+s1 <= s1.DB_MAX_OUTPUT_PORT_TYPE
+s2 <= s2.DB_MAX_OUTPUT_PORT_TYPE
+s3 <= s3.DB_MAX_OUTPUT_PORT_TYPE
+s4 <= s4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|ctrlEnable:ce
+TC[0] => Equal0.IN1
+TC[0] => Equal1.IN1
+TC[0] => Equal2.IN0
+TC[0] => Equal3.IN1
+TC[1] => Equal0.IN0
+TC[1] => Equal1.IN0
+TC[1] => Equal2.IN1
+TC[1] => Equal3.IN0
+SEL => C[0].DATAB
+SEL => C[2].DATAB
+SEL => C[4].DATAB
+SEL => C[6]$latch.DATAIN
+SEL => C[7]$latch.DATAIN
+SEL => C[5].DATAB
+SEL => C[3].DATAB
+SEL => C[1].DATAB
+rc => comb.IN1
+rc => comb.IN1
+rc => comb.IN1
+rc => comb.IN1
+rc => C[7].IN1
+rc => comb.IN1
+rc => C[5].IN1
+rc => comb.IN1
+rc => C[3].IN1
+rc => C[1]$latch.PRESET
+rc => C[0]$latch.PRESET
+C[0] <= C[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+C[1] <= C[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+C[2] <= C[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
+C[3] <= C[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
+C[4] <= C[4]$latch.DB_MAX_OUTPUT_PORT_TYPE
+C[5] <= C[5]$latch.DB_MAX_OUTPUT_PORT_TYPE
+C[6] <= C[6]$latch.DB_MAX_OUTPUT_PORT_TYPE
+C[7] <= C[7]$latch.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|demux_4x8:dm2_1
+E[0] => S1.DATAB
+E[0] => S2.DATAA
+E[1] => S1.DATAB
+E[1] => S2.DATAA
+E[2] => S1.DATAB
+E[2] => S2.DATAA
+E[3] => S1.DATAB
+E[3] => S2.DATAA
+sel => S1.OUTPUTSELECT
+sel => S1.OUTPUTSELECT
+sel => S1.OUTPUTSELECT
+sel => S1.OUTPUTSELECT
+sel => S2.OUTPUTSELECT
+sel => S2.OUTPUTSELECT
+sel => S2.OUTPUTSELECT
+sel => S2.OUTPUTSELECT
+S1[0] <= S1.DB_MAX_OUTPUT_PORT_TYPE
+S1[1] <= S1.DB_MAX_OUTPUT_PORT_TYPE
+S1[2] <= S1.DB_MAX_OUTPUT_PORT_TYPE
+S1[3] <= S1.DB_MAX_OUTPUT_PORT_TYPE
+S2[0] <= S2.DB_MAX_OUTPUT_PORT_TYPE
+S2[1] <= S2.DB_MAX_OUTPUT_PORT_TYPE
+S2[2] <= S2.DB_MAX_OUTPUT_PORT_TYPE
+S2[3] <= S2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|demux_4x8:dm2_2
+E[0] => S1.DATAB
+E[0] => S2.DATAA
+E[1] => S1.DATAB
+E[1] => S2.DATAA
+E[2] => S1.DATAB
+E[2] => S2.DATAA
+E[3] => S1.DATAB
+E[3] => S2.DATAA
+sel => S1.OUTPUTSELECT
+sel => S1.OUTPUTSELECT
+sel => S1.OUTPUTSELECT
+sel => S1.OUTPUTSELECT
+sel => S2.OUTPUTSELECT
+sel => S2.OUTPUTSELECT
+sel => S2.OUTPUTSELECT
+sel => S2.OUTPUTSELECT
+S1[0] <= S1.DB_MAX_OUTPUT_PORT_TYPE
+S1[1] <= S1.DB_MAX_OUTPUT_PORT_TYPE
+S1[2] <= S1.DB_MAX_OUTPUT_PORT_TYPE
+S1[3] <= S1.DB_MAX_OUTPUT_PORT_TYPE
+S2[0] <= S2.DB_MAX_OUTPUT_PORT_TYPE
+S2[1] <= S2.DB_MAX_OUTPUT_PORT_TYPE
+S2[2] <= S2.DB_MAX_OUTPUT_PORT_TYPE
+S2[3] <= S2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|demux_4x8:dm2_3
+E[0] => S1.DATAB
+E[0] => S2.DATAA
+E[1] => S1.DATAB
+E[1] => S2.DATAA
+E[2] => S1.DATAB
+E[2] => S2.DATAA
+E[3] => S1.DATAB
+E[3] => S2.DATAA
+sel => S1.OUTPUTSELECT
+sel => S1.OUTPUTSELECT
+sel => S1.OUTPUTSELECT
+sel => S1.OUTPUTSELECT
+sel => S2.OUTPUTSELECT
+sel => S2.OUTPUTSELECT
+sel => S2.OUTPUTSELECT
+sel => S2.OUTPUTSELECT
+S1[0] <= S1.DB_MAX_OUTPUT_PORT_TYPE
+S1[1] <= S1.DB_MAX_OUTPUT_PORT_TYPE
+S1[2] <= S1.DB_MAX_OUTPUT_PORT_TYPE
+S1[3] <= S1.DB_MAX_OUTPUT_PORT_TYPE
+S2[0] <= S2.DB_MAX_OUTPUT_PORT_TYPE
+S2[1] <= S2.DB_MAX_OUTPUT_PORT_TYPE
+S2[2] <= S2.DB_MAX_OUTPUT_PORT_TYPE
+S2[3] <= S2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|demux_4x8:dm2_4
+E[0] => S1.DATAB
+E[0] => S2.DATAA
+E[1] => S1.DATAB
+E[1] => S2.DATAA
+E[2] => S1.DATAB
+E[2] => S2.DATAA
+E[3] => S1.DATAB
+E[3] => S2.DATAA
+sel => S1.OUTPUTSELECT
+sel => S1.OUTPUTSELECT
+sel => S1.OUTPUTSELECT
+sel => S1.OUTPUTSELECT
+sel => S2.OUTPUTSELECT
+sel => S2.OUTPUTSELECT
+sel => S2.OUTPUTSELECT
+sel => S2.OUTPUTSELECT
+S1[0] <= S1.DB_MAX_OUTPUT_PORT_TYPE
+S1[1] <= S1.DB_MAX_OUTPUT_PORT_TYPE
+S1[2] <= S1.DB_MAX_OUTPUT_PORT_TYPE
+S1[3] <= S1.DB_MAX_OUTPUT_PORT_TYPE
+S2[0] <= S2.DB_MAX_OUTPUT_PORT_TYPE
+S2[1] <= S2.DB_MAX_OUTPUT_PORT_TYPE
+S2[2] <= S2.DB_MAX_OUTPUT_PORT_TYPE
+S2[3] <= S2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|counter_Wbits:c1
+d[0] => q.DATAB
+d[1] => q.DATAB
+d[2] => q.DATAB
+d[3] => q.DATAB
+clk => q[0]~reg0.CLK
+clk => q[1]~reg0.CLK
+clk => q[2]~reg0.CLK
+clk => q[3]~reg0.CLK
+clrn => q[0]~reg0.ACLR
+clrn => q[1]~reg0.ACLR
+clrn => q[2]~reg0.ACLR
+clrn => q[3]~reg0.ACLR
+ena => q[3]~reg0.ENA
+ena => q[2]~reg0.ENA
+ena => q[1]~reg0.ENA
+ena => q[0]~reg0.ENA
+load => q.OUTPUTSELECT
+load => q.OUTPUTSELECT
+load => q.OUTPUTSELECT
+load => q.OUTPUTSELECT
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|counter_Wbits:c2
+d[0] => q.DATAB
+d[1] => q.DATAB
+d[2] => q.DATAB
+d[3] => q.DATAB
+clk => q[0]~reg0.CLK
+clk => q[1]~reg0.CLK
+clk => q[2]~reg0.CLK
+clk => q[3]~reg0.CLK
+clrn => q[0]~reg0.ACLR
+clrn => q[1]~reg0.ACLR
+clrn => q[2]~reg0.ACLR
+clrn => q[3]~reg0.ACLR
+ena => q[3]~reg0.ENA
+ena => q[2]~reg0.ENA
+ena => q[1]~reg0.ENA
+ena => q[0]~reg0.ENA
+load => q.OUTPUTSELECT
+load => q.OUTPUTSELECT
+load => q.OUTPUTSELECT
+load => q.OUTPUTSELECT
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|counter_Wbits:c3
+d[0] => q.DATAB
+d[1] => q.DATAB
+d[2] => q.DATAB
+d[3] => q.DATAB
+clk => q[0]~reg0.CLK
+clk => q[1]~reg0.CLK
+clk => q[2]~reg0.CLK
+clk => q[3]~reg0.CLK
+clrn => q[0]~reg0.ACLR
+clrn => q[1]~reg0.ACLR
+clrn => q[2]~reg0.ACLR
+clrn => q[3]~reg0.ACLR
+ena => q[3]~reg0.ENA
+ena => q[2]~reg0.ENA
+ena => q[1]~reg0.ENA
+ena => q[0]~reg0.ENA
+load => q.OUTPUTSELECT
+load => q.OUTPUTSELECT
+load => q.OUTPUTSELECT
+load => q.OUTPUTSELECT
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|counter_Wbits:c4
+d[0] => q.DATAB
+d[1] => q.DATAB
+d[2] => q.DATAB
+d[3] => q.DATAB
+clk => q[0]~reg0.CLK
+clk => q[1]~reg0.CLK
+clk => q[2]~reg0.CLK
+clk => q[3]~reg0.CLK
+clrn => q[0]~reg0.ACLR
+clrn => q[1]~reg0.ACLR
+clrn => q[2]~reg0.ACLR
+clrn => q[3]~reg0.ACLR
+ena => q[3]~reg0.ENA
+ena => q[2]~reg0.ENA
+ena => q[1]~reg0.ENA
+ena => q[0]~reg0.ENA
+load => q.OUTPUTSELECT
+load => q.OUTPUTSELECT
+load => q.OUTPUTSELECT
+load => q.OUTPUTSELECT
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|ctrlCounter:ctrl
+A[0] => Equal0.IN7
+A[1] => Equal0.IN6
+A[2] => Equal0.IN5
+A[3] => Equal0.IN4
+B[0] => Equal1.IN7
+B[1] => Equal1.IN6
+B[2] => Equal1.IN5
+B[3] => Equal1.IN4
+C[0] => Equal3.IN7
+C[1] => Equal3.IN6
+C[2] => Equal3.IN5
+C[3] => Equal3.IN4
+D[0] => Equal2.IN7
+D[0] => Equal4.IN7
+D[1] => Equal2.IN6
+D[1] => Equal4.IN6
+D[2] => Equal2.IN5
+D[2] => Equal4.IN5
+D[3] => Equal2.IN4
+D[3] => Equal4.IN4
+E[0] <= process_0.DB_MAX_OUTPUT_PORT_TYPE
+E[1] <= E.DB_MAX_OUTPUT_PORT_TYPE
+E[2] <= process_0.DB_MAX_OUTPUT_PORT_TYPE
+E[3] <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|reg_pp_Wbits:r1
+d[0] => q[0]~reg0.DATAIN
+d[1] => q[1]~reg0.DATAIN
+d[2] => q[2]~reg0.DATAIN
+d[3] => q[3]~reg0.DATAIN
+clk => q[0]~reg0.CLK
+clk => q[1]~reg0.CLK
+clk => q[2]~reg0.CLK
+clk => q[3]~reg0.CLK
+clrn => q[0]~reg0.ACLR
+clrn => q[1]~reg0.ACLR
+clrn => q[2]~reg0.ACLR
+clrn => q[3]~reg0.ACLR
+ena => q[3]~reg0.ENA
+ena => q[2]~reg0.ENA
+ena => q[1]~reg0.ENA
+ena => q[0]~reg0.ENA
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|reg_pp_Wbits:r2
+d[0] => q[0]~reg0.DATAIN
+d[1] => q[1]~reg0.DATAIN
+d[2] => q[2]~reg0.DATAIN
+d[3] => q[3]~reg0.DATAIN
+clk => q[0]~reg0.CLK
+clk => q[1]~reg0.CLK
+clk => q[2]~reg0.CLK
+clk => q[3]~reg0.CLK
+clrn => q[0]~reg0.ACLR
+clrn => q[1]~reg0.ACLR
+clrn => q[2]~reg0.ACLR
+clrn => q[3]~reg0.ACLR
+ena => q[3]~reg0.ENA
+ena => q[2]~reg0.ENA
+ena => q[1]~reg0.ENA
+ena => q[0]~reg0.ENA
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|reg_pp_Wbits:r3
+d[0] => q[0]~reg0.DATAIN
+d[1] => q[1]~reg0.DATAIN
+d[2] => q[2]~reg0.DATAIN
+d[3] => q[3]~reg0.DATAIN
+clk => q[0]~reg0.CLK
+clk => q[1]~reg0.CLK
+clk => q[2]~reg0.CLK
+clk => q[3]~reg0.CLK
+clrn => q[0]~reg0.ACLR
+clrn => q[1]~reg0.ACLR
+clrn => q[2]~reg0.ACLR
+clrn => q[3]~reg0.ACLR
+ena => q[3]~reg0.ENA
+ena => q[2]~reg0.ENA
+ena => q[1]~reg0.ENA
+ena => q[0]~reg0.ENA
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|reg_pp_Wbits:r4
+d[0] => q[0]~reg0.DATAIN
+d[1] => q[1]~reg0.DATAIN
+d[2] => q[2]~reg0.DATAIN
+d[3] => q[3]~reg0.DATAIN
+clk => q[0]~reg0.CLK
+clk => q[1]~reg0.CLK
+clk => q[2]~reg0.CLK
+clk => q[3]~reg0.CLK
+clrn => q[0]~reg0.ACLR
+clrn => q[1]~reg0.ACLR
+clrn => q[2]~reg0.ACLR
+clrn => q[3]~reg0.ACLR
+ena => q[3]~reg0.ENA
+ena => q[2]~reg0.ENA
+ena => q[1]~reg0.ENA
+ena => q[0]~reg0.ENA
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|multplex:mt1
+A[0] => S.DATAB
+A[1] => S.DATAB
+A[2] => S.DATAB
+A[3] => S.DATAB
+B[0] => S.DATAA
+B[1] => S.DATAA
+B[2] => S.DATAA
+B[3] => S.DATAA
+sel => S.OUTPUTSELECT
+sel => S.OUTPUTSELECT
+sel => S.OUTPUTSELECT
+sel => S.OUTPUTSELECT
+S[0] <= S.DB_MAX_OUTPUT_PORT_TYPE
+S[1] <= S.DB_MAX_OUTPUT_PORT_TYPE
+S[2] <= S.DB_MAX_OUTPUT_PORT_TYPE
+S[3] <= S.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|multplex:mt2
+A[0] => S.DATAB
+A[1] => S.DATAB
+A[2] => S.DATAB
+A[3] => S.DATAB
+B[0] => S.DATAA
+B[1] => S.DATAA
+B[2] => S.DATAA
+B[3] => S.DATAA
+sel => S.OUTPUTSELECT
+sel => S.OUTPUTSELECT
+sel => S.OUTPUTSELECT
+sel => S.OUTPUTSELECT
+S[0] <= S.DB_MAX_OUTPUT_PORT_TYPE
+S[1] <= S.DB_MAX_OUTPUT_PORT_TYPE
+S[2] <= S.DB_MAX_OUTPUT_PORT_TYPE
+S[3] <= S.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|multplex:mt3
+A[0] => S.DATAB
+A[1] => S.DATAB
+A[2] => S.DATAB
+A[3] => S.DATAB
+B[0] => S.DATAA
+B[1] => S.DATAA
+B[2] => S.DATAA
+B[3] => S.DATAA
+sel => S.OUTPUTSELECT
+sel => S.OUTPUTSELECT
+sel => S.OUTPUTSELECT
+sel => S.OUTPUTSELECT
+S[0] <= S.DB_MAX_OUTPUT_PORT_TYPE
+S[1] <= S.DB_MAX_OUTPUT_PORT_TYPE
+S[2] <= S.DB_MAX_OUTPUT_PORT_TYPE
+S[3] <= S.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|multplex:mt4
+A[0] => S.DATAB
+A[1] => S.DATAB
+A[2] => S.DATAB
+A[3] => S.DATAB
+B[0] => S.DATAA
+B[1] => S.DATAA
+B[2] => S.DATAA
+B[3] => S.DATAA
+sel => S.OUTPUTSELECT
+sel => S.OUTPUTSELECT
+sel => S.OUTPUTSELECT
+sel => S.OUTPUTSELECT
+S[0] <= S.DB_MAX_OUTPUT_PORT_TYPE
+S[1] <= S.DB_MAX_OUTPUT_PORT_TYPE
+S[2] <= S.DB_MAX_OUTPUT_PORT_TYPE
+S[3] <= S.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|decodificador:dc1
+etr[0] => a.IN0
+etr[0] => a.IN0
+etr[0] => a.IN0
+etr[1] => a.IN1
+etr[1] => a.IN1
+etr[1] => a.IN1
+etr[2] => a.IN1
+etr[2] => a.IN1
+etr[2] => a.IN1
+etr[2] => a.IN1
+etr[2] => a.IN1
+etr[3] => a.IN1
+etr[3] => a.IN1
+etr[3] => a.IN1
+etr[3] => a.IN1
+etr[3] => c.IN1
+etr[3] => a.IN1
+etr[3] => a.IN1
+etr[3] => a.IN1
+etr[3] => b.IN1
+etr[3] => b.IN1
+a <= a.DB_MAX_OUTPUT_PORT_TYPE
+b <= b.DB_MAX_OUTPUT_PORT_TYPE
+c <= c.DB_MAX_OUTPUT_PORT_TYPE
+d <= d.DB_MAX_OUTPUT_PORT_TYPE
+e <= e.DB_MAX_OUTPUT_PORT_TYPE
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+g <= g.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|decodificador:dc2
+etr[0] => a.IN0
+etr[0] => a.IN0
+etr[0] => a.IN0
+etr[1] => a.IN1
+etr[1] => a.IN1
+etr[1] => a.IN1
+etr[2] => a.IN1
+etr[2] => a.IN1
+etr[2] => a.IN1
+etr[2] => a.IN1
+etr[2] => a.IN1
+etr[3] => a.IN1
+etr[3] => a.IN1
+etr[3] => a.IN1
+etr[3] => a.IN1
+etr[3] => c.IN1
+etr[3] => a.IN1
+etr[3] => a.IN1
+etr[3] => a.IN1
+etr[3] => b.IN1
+etr[3] => b.IN1
+a <= a.DB_MAX_OUTPUT_PORT_TYPE
+b <= b.DB_MAX_OUTPUT_PORT_TYPE
+c <= c.DB_MAX_OUTPUT_PORT_TYPE
+d <= d.DB_MAX_OUTPUT_PORT_TYPE
+e <= e.DB_MAX_OUTPUT_PORT_TYPE
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+g <= g.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|decodificador:dc3
+etr[0] => a.IN0
+etr[0] => a.IN0
+etr[0] => a.IN0
+etr[1] => a.IN1
+etr[1] => a.IN1
+etr[1] => a.IN1
+etr[2] => a.IN1
+etr[2] => a.IN1
+etr[2] => a.IN1
+etr[2] => a.IN1
+etr[2] => a.IN1
+etr[3] => a.IN1
+etr[3] => a.IN1
+etr[3] => a.IN1
+etr[3] => a.IN1
+etr[3] => c.IN1
+etr[3] => a.IN1
+etr[3] => a.IN1
+etr[3] => a.IN1
+etr[3] => b.IN1
+etr[3] => b.IN1
+a <= a.DB_MAX_OUTPUT_PORT_TYPE
+b <= b.DB_MAX_OUTPUT_PORT_TYPE
+c <= c.DB_MAX_OUTPUT_PORT_TYPE
+d <= d.DB_MAX_OUTPUT_PORT_TYPE
+e <= e.DB_MAX_OUTPUT_PORT_TYPE
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+g <= g.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|decodificador:dc4
+etr[0] => a.IN0
+etr[0] => a.IN0
+etr[0] => a.IN0
+etr[1] => a.IN1
+etr[1] => a.IN1
+etr[1] => a.IN1
+etr[2] => a.IN1
+etr[2] => a.IN1
+etr[2] => a.IN1
+etr[2] => a.IN1
+etr[2] => a.IN1
+etr[3] => a.IN1
+etr[3] => a.IN1
+etr[3] => a.IN1
+etr[3] => a.IN1
+etr[3] => c.IN1
+etr[3] => a.IN1
+etr[3] => a.IN1
+etr[3] => a.IN1
+etr[3] => b.IN1
+etr[3] => b.IN1
+a <= a.DB_MAX_OUTPUT_PORT_TYPE
+b <= b.DB_MAX_OUTPUT_PORT_TYPE
+c <= c.DB_MAX_OUTPUT_PORT_TYPE
+d <= d.DB_MAX_OUTPUT_PORT_TYPE
+e <= e.DB_MAX_OUTPUT_PORT_TYPE
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+g <= g.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|alarme:a1
+A2[0] => Equal0.IN3
+A2[1] => Equal0.IN2
+A2[2] => Equal0.IN1
+A2[3] => Equal0.IN0
+B2[0] => Equal0.IN7
+B2[1] => Equal0.IN6
+B2[2] => Equal0.IN5
+B2[3] => Equal0.IN4
+saida <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|alarme:b1
+A2[0] => Equal0.IN3
+A2[1] => Equal0.IN2
+A2[2] => Equal0.IN1
+A2[3] => Equal0.IN0
+B2[0] => Equal0.IN7
+B2[1] => Equal0.IN6
+B2[2] => Equal0.IN5
+B2[3] => Equal0.IN4
+saida <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|alarme:j1
+A2[0] => Equal0.IN3
+A2[1] => Equal0.IN2
+A2[2] => Equal0.IN1
+A2[3] => Equal0.IN0
+B2[0] => Equal0.IN7
+B2[1] => Equal0.IN6
+B2[2] => Equal0.IN5
+B2[3] => Equal0.IN4
+saida <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|alarme:d1
+A2[0] => Equal0.IN3
+A2[1] => Equal0.IN2
+A2[2] => Equal0.IN1
+A2[3] => Equal0.IN0
+B2[0] => Equal0.IN7
+B2[1] => Equal0.IN6
+B2[2] => Equal0.IN5
+B2[3] => Equal0.IN4
+saida <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogioDigital|alarmAnd:saida1
+dado1 => sad.IN0
+dado2 => sad.IN1
+dado3 => sad.IN1
+dado4 => sad.IN1
+sad <= sad.DB_MAX_OUTPUT_PORT_TYPE
+
+

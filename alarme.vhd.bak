@@ -1,0 +1,13 @@
+ENTITY alarme IS
+PORT(A, B : IN BIT_VECTOR(3 DOWNTO 0);
+	  saida : OUT BIT;
+END alarme;
+ARCHITECTURE behavior OF alarme IS
+BEGIN
+	BEGIN
+		IF (A = B) THEN
+			saida <= 1;
+		ELSE
+			saida <= 0;
+		END IF;
+END behavior;
