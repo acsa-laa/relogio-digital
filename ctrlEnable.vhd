@@ -6,7 +6,7 @@ PORT(DI : IN BIT_VECTOR(1 DOWNTO 0);
 END ctrlEnable;
 ARCHITECTURE behavior OF ctrlEnable IS
 BEGIN
-PROCESS(rc ,DI, SEL)
+PROCESS(set ,DI, SEL)
 BEGIN
 	CASE set IS
 	WHEN '1' => IF (DI = "00") THEN
